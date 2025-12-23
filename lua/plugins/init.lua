@@ -11,6 +11,11 @@ require('lazy').setup({
   { import = 'plugins.indent_line' },
   { import = 'plugins.lint' },
   { import = 'plugins.neo-tree' },
+  { import = 'plugins.flash' },
+  { import = 'plugins.fidget' },
+  { import = 'plugins.vim-tpipeline' },
+  { import = 'plugins.vim-tmux-navigator' },
+  { import = 'plugins.tabout' },
 }, {
   checker = { enabled = true },
   change_detection = { notify = false },
