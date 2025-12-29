@@ -16,6 +16,7 @@ require('lazy').setup({
   { import = 'plugins.vim-tpipeline' },
   { import = 'plugins.vim-tmux-navigator' },
   { import = 'plugins.tabout' },
+  { import = 'plugins.move' },
 }, {
   checker = { enabled = true },
   change_detection = { notify = false },
