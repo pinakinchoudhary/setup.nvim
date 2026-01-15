@@ -17,6 +17,7 @@ require('lazy').setup({
   { import = 'plugins.vim-tmux-navigator' },
   { import = 'plugins.tabout' },
   { import = 'plugins.move' },
+  { import = 'plugins.float-terminal' },
 }, {
   checker = { enabled = true },
   change_detection = { notify = false },
