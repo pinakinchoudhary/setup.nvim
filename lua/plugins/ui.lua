@@ -1,7 +1,6 @@
 return {
+  -- lazy.nvim UI options
   ui = {
-    -- If you are using a Nerd Font: set icons to an empty table which will use the
-    -- default lazy.nvim defined Nerd Font icons, otherwise define a unicode icons table
     icons = vim.g.have_nerd_font and {} or {
       cmd = '⌘',
       config = '🛠',
@@ -18,28 +17,48 @@ return {
       lazy = '💤 ',
     },
   },
-  { -- You can easily change to a different colorscheme.
-    -- Change the name of the colorscheme plugin below, and then
-    -- change the command in the config to whatever the name of that colorscheme is.
-    --
-    -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-    'folke/tokyonight.nvim',
-    priority = 1000, -- Make sure to load this before all the other start plugins.
+
+  -- plugins (numeric entries only)
+  {
+    'catppuccin/nvim',
+    name = 'catppuccin',
+    priority = 1000,
     config = function()
-      ---@diagnostic disable-next-line: missing-fields
-      require('tokyonight').setup {
+      require('catppuccin').setup {
         styles = {
-          comments = { italic = false }, -- Disable italics in comments
+          comments = {},
         },
       }
 
-      -- Load the colorscheme here.
-      -- Like many other themes, this one has different styles, and you could load
-      -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      vim.cmd.colorscheme 'tokyonight-night'
+      vim.cmd.colorscheme 'catppuccin'
+      -- transparent background
+      local hl = vim.api.nvim_set_hl
+
+      -- Core editor (active + inactive)
+      hl(0, 'Normal', { bg = 'none' })
+      hl(0, 'NormalNC', { bg = 'none' })
+      hl(0, 'NormalFloat', { bg = 'none' })
+      hl(0, 'SignColumn', { bg = 'none' })
+      hl(0, 'EndOfBuffer', { bg = 'none' })
+      hl(0, 'LineNr', { bg = 'none' })
+      hl(0, 'FoldColumn', { bg = 'none' })
+
+      -- Neo-tree (active + inactive)
+      hl(0, 'NeoTreeNormal', { bg = 'none' })
+      hl(0, 'NeoTreeNormalNC', { bg = 'none' })
+      hl(0, 'NeoTreeEndOfBuffer', { bg = 'none' })
+      hl(0, 'NeoTreeWinSeparator', { bg = 'none' })
+      hl(0, 'NeoTreeCursorLine', { bg = 'none' })
+      hl(0, 'NeoTreeVertSplit', { bg = 'none' })
+      hl(0, 'NeoTreeStatusLine', { bg = 'none' })
+      hl(0, 'NeoTreeStatusLineNC', { bg = 'none' })
     end,
   },
 
-  -- Highlight todo, notes, etc in comments
-  { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
+  {
+    'folke/todo-comments.nvim',
+    event = 'VimEnter',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    opts = { signs = false },
+  },
 }
